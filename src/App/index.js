@@ -14,7 +14,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         const { navigate } = this.props.navigation;
-        this.onPress = () => { navigate('Detail') };
+        this.onPress = (value) => { navigate('Detail',value) };
         global.toDetail=this.onPress.bind(this);
     }
     

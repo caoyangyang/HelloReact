@@ -11,15 +11,26 @@ class DeepInfo extends Component {
         title: 'Detail'
     };
     render() {
-         const { navigate } = this.props.navigation;
+        const { navigate, state } = this.props.navigation;
         return (
-            <View style={styles.main}>
-                <Text onPress={()=>{navigate('Home')}}>More Detail </Text>
+            <View style={styles.main} onPress={() => { navigate('Home') }}>
+                <Text style={styles.title}>{state.params.title} </Text>
+                <Text style={styles.detail}>{state.params.detail} </Text>
             </View>
         );
     }
 }
 const styles = StyleSheet.create({
-    main: { flex: 1 }
+    main: { flex: 1 },
+    title:{
+        fontSize: 18,
+        margin:20
+    },
+    detail:{
+        marginLeft:20,
+        marginRight:20,
+        fontSize: 16,
+        color: "grey",
+    }
 });
 export default DeepInfo;

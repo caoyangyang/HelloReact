@@ -10,12 +10,15 @@ export default class MessageItem extends Component {
     constructor(props) {
         super(props);
     }
+    onPress = () => {
+        global.toDetail({ title: this.props.title,detail:this.props.glance })
+    };
     render() {
         return (
             <View style={styles.wrapper} >
                 <Image style={styles.icon} source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}></Image>
                 <View style={styles.content} >
-                    <Text numberOfLines={1} style={styles.groupName} onPress={global.toDetail}>
+                    <Text numberOfLines={1} style={styles.groupName} onPress={this.onPress}>
                         {this.props.title}
                     </Text>
                     <Text numberOfLines={1} style={styles.latestNews} ellipsizeMode="tail">
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
         flex: 1.4,
         width: 40,
         height: 40,
-        marginRight:10,
+        marginRight: 10,
         flexDirection: 'column'
     },
     content: {
@@ -46,10 +49,10 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     groupName: {
-        fontSize:16
+        fontSize: 16
     },
     latestNews: {
-        color:"grey",
-        fontSize:12
+        color: "grey",
+        fontSize: 12
     }
 });
