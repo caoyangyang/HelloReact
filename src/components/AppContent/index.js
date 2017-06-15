@@ -4,7 +4,7 @@ import {
     Text,
     View
 } from 'react-native';
-import HelloReact from '../HelloReact';
+import MessageBox from '../MessageBox';
 import SearchBar from '../SearchBar';
 
 export default class AppContent extends Component {
@@ -12,7 +12,7 @@ export default class AppContent extends Component {
         return (
             <View style={styles.wrapper} >
                 <SearchBar></SearchBar>
-                <HelloReact></HelloReact>
+                <MessageBox></MessageBox>
             </View>
         );
     }
@@ -20,6 +20,6 @@ export default class AppContent extends Component {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 10,
-        backgroundColor: 'skyblue'
+        backgroundColor: 'white'
     }
 });
