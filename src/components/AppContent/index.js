@@ -24,7 +24,8 @@ export default class AppContent extends Component {
         this.state = { searchData: data };
     }
     search=(keyword)=>{
-        var result=data.filter(a=>(a.title.indexOf(keyword)>=0))
+        keyword=keyword.toLowerCase()
+        var result=data.filter(a=>(a.title.toLowerCase().indexOf(keyword)>=0||a.glance.toLowerCase().indexOf(keyword)>=0))
         this.setState({searchData:result});
     };
 
