@@ -9,7 +9,6 @@ export default class AppFooter extends Component {
     render() {
         return (
             <View style={styles.wrapper} >
-              
             </View>
         );
     }
@@ -17,7 +16,7 @@ export default class AppFooter extends Component {
 const styles = StyleSheet.create({
     wrapper:{ 
         flex: 1, 
-        backgroundColor: 'steelblue' 
+        backgroundColor: '#484848'
     },
     content: {
         fontSize: 20,

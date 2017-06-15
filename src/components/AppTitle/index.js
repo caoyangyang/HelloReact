@@ -9,7 +9,7 @@ export default class AppTitle extends Component {
     render() {
         return (
             <View style={styles.wrapper} >
-                <Text style={styles.content}>Hello React</Text>
+                <Text style={styles.content}>ReactNow</Text>
             </View>
         );
     }
@@ -17,11 +17,13 @@ export default class AppTitle extends Component {
 const styles = StyleSheet.create({
     wrapper: { 
         flex: 1, 
-        backgroundColor: 'powderblue' 
+        backgroundColor: '#484848',
+        marginTop:20
     },
     content: {
-        fontSize: 20,
+        fontSize: 22,
         textAlign: 'center',
         margin: 10,
+        color:'white'
     }
 });
