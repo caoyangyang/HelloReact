@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
-    TextInput,View
+    TextInput,
+    View,
+    Button
 } from 'react-native';
 
 export default class SearchBar extends Component {
@@ -10,14 +12,23 @@ export default class SearchBar extends Component {
         this.state = { text: '' };
     }
     render() {
+        onPress=(event)=>{
+            this.props.search(this.state.text);
+        };
         return (
-            <View style={styles.wrapper}> 
+            <View style={styles.wrapper}>
                 <TextInput
-                style={styles.input}
-                onChangeText={(text) => this.setState({ text })}
-                value={this.state.text}
-                placeholder="Search Now" >
+                    style={styles.input}
+                    onChangeText={(text) => this.setState({ text })}
+                    value={this.state.text}
+                    placeholder="Keyword" >
                 </TextInput>
+                <Button color="gray"
+                    overrides={{backgroundColor: "black"}}
+                    title="Search"
+                    style={styles.search}
+                    onPress={onPress}>
+                </Button>
             </View>
         );
     }
@@ -29,14 +40,23 @@ const styles = StyleSheet.create({
         borderColor: 'rgb(247,247,247)',
         borderRadius: 4,
         borderWidth: 1,
-        paddingLeft:10,
-        paddingRight:10,
+        paddingLeft: 10,
+        paddingRight: 10,
         color: "gray",
-        backgroundColor: "white"
+        backgroundColor: "white",
+        flex:8
+    },
+    search:{
+        flex:2
     },
     wrapper: {
-        paddingLeft:5,
-        paddingRight:5,
-        backgroundColor: "white"
+        paddingLeft: 5,
+        paddingRight: 5,
+        backgroundColor: "white",
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        marginTop:10,
+        marginLeft:5
     }
 });
