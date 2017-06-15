@@ -14,8 +14,8 @@ export default class MessageItem extends Component {
         return (
             <View style={styles.wrapper} >
                 <Image style={styles.icon} source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}></Image>
-                <View style={styles.content}>
-                    <Text numberOfLines={1} style={styles.groupName}>
+                <View style={styles.content} >
+                    <Text numberOfLines={1} style={styles.groupName} onPress={global.toDetail}>
                         {this.props.title}
                     </Text>
                     <Text numberOfLines={1} style={styles.latestNews} ellipsizeMode="tail">

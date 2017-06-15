@@ -1,17 +1,15 @@
 import { AppRegistry } from 'react-native';
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 
-import App from './App';
+import Main from './App';
+import Detail from './DeepInfo';
 
 
 export default function index() {
-    class Root extends Component {
-        render() {
-            return (
-                <App />
-            );
-        }
-    }
-
-    AppRegistry.registerComponent('HelloReact', () => Root);
+    const ReactApp = StackNavigator({
+        Home: { screen: Main },
+        Detail: { screen: Detail }
+    });
+    AppRegistry.registerComponent('HelloReact', () => ReactApp);
 }
