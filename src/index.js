@@ -2,8 +2,8 @@ import { AppRegistry } from 'react-native';
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 
-import Main from './App';
-import Detail from './DeepInfo';
+import Main from './containers/App';
+import Detail from './containers/DeepInfo';
 
 
 export default function index() {
