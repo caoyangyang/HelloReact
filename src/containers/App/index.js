@@ -14,10 +14,14 @@ class App extends Component {
     constructor(props) {
         super(props);
         const { navigate } = this.props.navigation;
-        this.onPress = (value) => { navigate('Detail',value) };
-        global.toDetail=this.onPress.bind(this);
+        this.toDetail = (value) => { navigate('Detail', value) };
+        this.toAdd = () => {navigate('AddItem') };
+       
+        global.toDetail = this.toDetail.bind(this);
+        global.toAddItem = this.toAdd.bind(this);
+        
     }
-    
+
     render() {
         return (
             <View style={styles.main}>

@@ -15,7 +15,7 @@ export default class AppContent extends Component {
     }
     componentDidMount() {
         var self = this;
-        fetch('https://reactnow.getsandbox.com/items')
+        fetch('https://reactnow.getsandbox.com/item')
             .then((response) => {
                 return response.json();
             })
