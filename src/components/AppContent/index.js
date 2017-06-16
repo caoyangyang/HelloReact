@@ -23,7 +23,6 @@ export default class AppContent extends Component {
                 self.dataFromServer = responseJson.data;
                 this.setState({
                     searchData: responseJson.data,
-                }, function () {
                 });
             })
             .catch((error) => {
@@ -35,8 +34,6 @@ export default class AppContent extends Component {
         var result = this.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.glance.toLowerCase().indexOf(keyword) >= 0))
         this.setState({ searchData: result });
     };
-
-
 
     render() {
         return (

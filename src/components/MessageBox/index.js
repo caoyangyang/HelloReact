@@ -9,7 +9,7 @@ import MessageItem from '../MessageItem';
 export default class MessageBox extends Component {
     render() {
         var datas = this.props.data;
-        var messages = datas.map(m => (<MessageItem key={Math.random()} title={m.title} glance={m.glance}></MessageItem>));
+        var messages = datas.map(m => (<MessageItem key={Math.random()} title={m.title} glance={m.glance} id={m.id}></MessageItem>));
         return (
             <ScrollView style={styles.wrapper} >
                 {messages}

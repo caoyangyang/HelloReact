@@ -11,7 +11,7 @@ export default class MessageItem extends Component {
         super(props);
     }
     onPress = () => {
-        global.toDetail({ title: this.props.title,detail:this.props.glance })
+        global.toDetail({ id: this.props.id })
     };
     render() {
         return (
