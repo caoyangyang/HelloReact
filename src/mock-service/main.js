@@ -17,6 +17,13 @@ Sandbox.define('/item', 'POST', function(req, res) {
     return res.json({status: "ok"});
 });
 
+Sandbox.define('/item', 'DELETE', function(req, res) {
+    state.items = state.items || [];
+    data=req.body.item;
+    _.dropWhile(state.items,{id:data.id});
+    return res.json({status: "ok"});
+});
+
 Sandbox.define('/item/{id}', 'GET', function(req, res) {
     var id = req.params.id;
     var items= state.items || [];
