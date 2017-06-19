@@ -31,6 +31,7 @@ export default class MessageItem extends Component {
                             id: this.state.id.toString()
                         })
                     })
+                    this.props.remove(this.state.id.toString());
                 }
             }
         ]

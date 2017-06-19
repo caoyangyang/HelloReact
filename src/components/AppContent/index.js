@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import MessageBox from '../MessageBox';
 import SearchBar from '../SearchBar';
+import _ from 'lodash';
 
 export default class AppContent extends Component {
     constructor(props) {
@@ -29,8 +30,18 @@ export default class AppContent extends Component {
                 console.warn(error);
             });
     }
+    remove=(id)=>{
+        var self=this;
+        var {searchData}=self.state;
+
+        _.remove(searchData,function(item){
+            return item.id===id;
+        });
+        self.setState(searchData);
+    };
+
     search = (keyword) => {
-        keyword = keyword.toLowerCase()
+        keyword = keyword.toLowerCase();
         var result = this.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.glance.toLowerCase().indexOf(keyword) >= 0))
         this.setState({ searchData: result });
     };
@@ -39,7 +50,7 @@ export default class AppContent extends Component {
         return (
             <View style={styles.wrapper} >
                 <SearchBar search={this.search}></SearchBar>
-                <MessageBox data={this.state.searchData}></MessageBox>
+                <MessageBox data={this.state.searchData} remove={this.remove}></MessageBox>
             </View>
         );
     }
