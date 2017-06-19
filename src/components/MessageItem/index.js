@@ -35,7 +35,7 @@ export default class MessageItem extends Component {
             }
         ]
         return (
-            <Swipeout right={delButton} onOpen={() => {
+            <Swipeout right={delButton} autoClose={true} onOpen={() => {
                 this.setState({
                     id: this.props.id
                 })
