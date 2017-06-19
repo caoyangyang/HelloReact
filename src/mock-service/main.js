@@ -9,19 +9,19 @@ Sandbox.define('/init', 'GET', function(req, res) {
 
 Sandbox.define('/item', 'POST', function(req, res) {
     state.items = state.items || [];
+    new_id=parseInt(_.orderBy(state.items,function(e){return parseInt(e.id)},"desc")[0].id)+1;
     data=req.body.item;
-    max_id_string=_.orderBy(state.items,'id',"desc")[0].id;
-    data.id= (parseInt(max_id_string)+1).toString();
- 
+    data.id= new_id.toString();
     state.items.push(data);
-    return res.json({status: "ok"});
+    return res.json({status: "ok",data:data.id});
 });
 
 Sandbox.define('/item', 'DELETE', function(req, res) {
     state.items = state.items || [];
-    data=req.body.item;
-    _.dropWhile(state.items,{id:data.id});
-    return res.json({status: "ok"});
+    _.remove(state.items,function(e){
+        return e.id===req.body.id;
+    });
+    return res.json({status: "ok",data:state.items,req_id:req.body.id});
 });
 
 Sandbox.define('/item/{id}', 'GET', function(req, res) {
