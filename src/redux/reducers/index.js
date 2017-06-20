@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
 import {AppNavigator} from '../../navigator/AppNavigator';
 
+const initialItemsState={data:[]};
+
 const initialNavState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
 
 function nav(state = initialNavState, action) {
@@ -13,8 +15,17 @@ function nav(state = initialNavState, action) {
     return nextState || state;
 }
 
+function items(state = initialItemsState, action) {
+    switch (action.type) {
+        case 'SET':
+            return {data: action.loadData };
+        default:
+            return state;
+    }
+}
+
 const AppReducer = combineReducers({
-    nav
+    nav,items
 });
 
 export default AppReducer;
