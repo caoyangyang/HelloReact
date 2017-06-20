@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
-import {
-    StyleSheet,
-    TextInput,
-    View,
-    Button
-} from 'react-native';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import {StyleSheet, TextInput, View, Button} from 'react-native';
+import  {connectComponent} from "../../redux/common/mapStateToProps"
 
 class SearchBar extends Component {
     constructor(props) {
         super(props);
-        this.state = { text: '' };
+        this.state = {text: ''};
     }
+
     render() {
-        onPress=()=>{this.props.dispatch({ type: 'SEARCH',loadData:this.state.text.toLowerCase()});};
+        onPress = ()=> {
+            this.props.dispatch({type: 'SEARCH', loadData: this.state.text.toLowerCase()});
+        };
 
         return (
             <View style={styles.wrapper}>
@@ -22,13 +19,13 @@ class SearchBar extends Component {
                     style={styles.input}
                     onChangeText={(text) => this.setState({ text })}
                     value={this.state.text}
-                    placeholder="Keyword" >
+                    placeholder="Keyword">
                 </TextInput>
                 <Button color="gray"
-                    overrides={{backgroundColor: "black"}}
-                    title="Search"
-                    style={styles.search}
-                    onPress={onPress}>
+                        overrides={{backgroundColor: "black"}}
+                        title="Search"
+                        style={styles.search}
+                        onPress={onPress}>
                 </Button>
             </View>
         );
@@ -45,10 +42,10 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         color: "gray",
         backgroundColor: "white",
-        flex:8
+        flex: 8
     },
-    search:{
-        flex:2
+    search: {
+        flex: 2
     },
     wrapper: {
         paddingLeft: 5,
@@ -57,15 +54,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'flex-start',
-        marginTop:10,
-        marginLeft:5
+        marginTop: 10,
+        marginLeft: 5
     }
 });
 
-SearchBar.propTypes = {
-    items: PropTypes.object.isRequired
-};
-const mapStateToProps = state => ({
-    items: state.items
-});
-export default connect(mapStateToProps)(SearchBar);
+export default connectComponent(SearchBar);

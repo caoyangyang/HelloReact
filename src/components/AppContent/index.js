@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import  {connectComponent} from "../../redux/common/mapStateToProps"
 import MessageBox from '../MessageBox';
 import SearchBar from '../SearchBar';
 
@@ -34,17 +33,11 @@ class AppContent extends Component {
         );
     }
 }
-AppContent.propTypes = {
-    items: PropTypes.object.isRequired
-};
 const styles = StyleSheet.create({
     wrapper: {
         flex: 10,
         backgroundColor: 'white'
     }
 });
-const mapStateToProps = state => ({
-    items: state.items
-});
 
-export default connect(mapStateToProps)(AppContent);
+export default connectComponent(AppContent);

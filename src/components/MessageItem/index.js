@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import  {connectComponent} from "../../redux/common/mapStateToProps"
 import Swipeout from 'react-native-swipeout';
-
 
 class MessageItem extends Component {
     constructor(props) {
@@ -68,11 +66,4 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = state => ({
-    items: state.items
-});
-MessageItem.propTypes = {
-    items: PropTypes.object.isRequired
-};
-
-export default connect(mapStateToProps)(MessageItem);
+export default connectComponent(MessageItem);
