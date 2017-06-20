@@ -48,7 +48,7 @@ export default class MessageItem extends Component {
                             {this.props.title}
                         </Text>
                         <Text numberOfLines={1} style={styles.latestNews} ellipsizeMode="tail">
-                            {this.props.glance}
+                            {this.props.detail}
                         </Text>
                     </View>
                 </View>

@@ -35,7 +35,7 @@ class AddItem extends Component {
                 <TextInput multiline={true}
                     placeholder="Title" style={[styles.input, styles.title]} value={this.state.title} onChangeText={(title) => this.setState({ title })} />
                 <TextInput multiline={true}
-                    placeholder="Glance" style={[styles.input, styles.detail]} value={this.state.detail} onChangeText={(detail) => this.setState({ detail })} />
+                    placeholder="Detail" style={[styles.input, styles.detail]} value={this.state.detail} onChangeText={(detail) => this.setState({ detail })} />
                 <TextInput multiline={true}
                     placeholder="More" style={[styles.input, styles.more]} value={this.state.more} onChangeText={(more) => this.setState({ more })} />
                 <Button color="gray"

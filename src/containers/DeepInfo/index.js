@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text,TextInput, StyleSheet,Button } from 'react-native';
 
 
 import {
@@ -12,7 +12,7 @@ class DeepInfo extends Component {
     };
     constructor(props) {
         super(props);
-        this.state = { data: {} };
+        this.state = { data: {} ,isEdit:false};
     }
     componentDidMount() {
         var self = this;
@@ -23,23 +23,77 @@ class DeepInfo extends Component {
             })
             .then((responseJson) => {
                 this.setState({
-                    data: responseJson,
+                    data: responseJson
                 });
             })
             .catch((error) => {
                 console.warn(error);
             });
     }
+    startEdit=()=>{
+        this.setState({isEdit:true});
+    };
+    cancel=()=>{
+        this.setState({isEdit:false});
+    };
+
+    save=()=>{
+        fetch('https://reactnow.getsandbox.com/item', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                item: this.state.data
+            })
+        });
+        this.props.navigation.navigate('Home');
+    };
+
+    updateState=(data)=>{
+        var newData = Object.assign(this.state.data,data);
+        this.setState({ data: newData });
+    };
+
     render() {
         const { navigate, state } = this.props.navigation;
         const { data } = this.state;
-        return (
-            <View style={styles.main} onPress={() => { navigate('Home') }}>
-                <Text style={styles.title}>{data.title} </Text>
-                <Text style={styles.detail}>{data.detail} </Text>
-                <Text style={styles.more}>{data.more} </Text>
-            </View>
-        );
+        viewComponent =<View style={styles.main} onPress={() => { navigate('Home') }}>
+            <Text style={styles.title}>{data.title} </Text>
+            <Text style={styles.detail}>{data.detail} </Text>
+            <Text style={styles.more}>{data.more} </Text>
+            <Button color="gray"
+                    overrides={{ backgroundColor: "black" }}
+                    title="Edit"
+                    style={styles.button}
+                    onPress={this.startEdit}>
+            </Button>
+        </View>;
+
+        editComponent =<View style={styles.main} onPress={() => { navigate('Home') }}>
+            <TextInput multiline={true}
+                       placeholder="Title" style={[styles.input, styles.title]} value={data.title} onChangeText={(title) => this.updateState({ title })} />
+            <TextInput multiline={true}
+                       placeholder="Detail" style={[styles.input, styles.detail]} value={data.detail} onChangeText={(detail) => this.updateState({ detail })} />
+            <TextInput multiline={true}
+                       placeholder="More" style={[styles.input, styles.more]} value={data.more} onChangeText={(more) => this.updateState({ more })} />
+
+            <Button color="gray"
+                    overrides={{ backgroundColor: "black" }}
+                    title="Save"
+                    style={styles.button}
+                    onPress={this.save}>
+            </Button>
+            <Button color="gray"
+                    overrides={{ backgroundColor: "black" }}
+                    title="Cancel"
+                    style={styles.button}
+                    onPress={this.cancel}>
+            </Button>
+        </View>;
+
+        return (this.state.isEdit?editComponent:viewComponent);
     }
 }
 const styles = StyleSheet.create({
@@ -67,6 +121,9 @@ const styles = StyleSheet.create({
         marginTop: 10,
         color: "grey",
         fontSize: 16
+    },
+    button:{
+
     }
 });
 export default DeepInfo;

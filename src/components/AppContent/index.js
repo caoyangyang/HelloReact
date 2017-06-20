@@ -42,7 +42,7 @@ export default class AppContent extends Component {
 
     search = (keyword) => {
         keyword = keyword.toLowerCase();
-        var result = this.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.glance.toLowerCase().indexOf(keyword) >= 0))
+        var result = this.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.detail.toLowerCase().indexOf(keyword) >= 0))
         this.setState({ searchData: result });
     };
 
