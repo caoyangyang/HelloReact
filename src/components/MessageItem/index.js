@@ -26,12 +26,8 @@ class MessageItem extends Component {
                     <Image style={styles.icon}
                            source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}></Image>
                     <View style={styles.content}>
-                        <Text numberOfLines={1} style={styles.groupName} onPress={this.onPress}>
-                            {title}
-                        </Text>
-                        <Text numberOfLines={1} style={styles.latestNews} ellipsizeMode="tail">
-                            {detail}
-                        </Text>
+                        <Text numberOfLines={1} style={styles.groupName} onPress={this.onPress}>{title}</Text>
+                        <Text numberOfLines={1} style={styles.latestNews} ellipsizeMode="tail">{detail}</Text>
                     </View>
                 </View>
             </Swipeout>

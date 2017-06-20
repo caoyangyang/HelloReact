@@ -1,9 +1,7 @@
 import React from 'react';
 import {StackNavigator, addNavigationHelpers} from 'react-navigation';
-
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-
 import Main from '../containers/App';
 import Detail from '../containers/DeepInfo';
 import Add from '../containers/AddItem';
@@ -16,14 +14,14 @@ export const AppNavigator = StackNavigator({
 const AppWithNavigationState = ({dispatch, nav}) => {
     return <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })}/>
 };
+const mapStateToProps = state => ({
+    nav: state.nav
+});
+
 AppWithNavigationState.propTypes = {
     dispatch: PropTypes.func.isRequired,
     nav: PropTypes.object.isRequired
 };
-
-const mapStateToProps = state => ({
-    nav: state.nav
-});
 
 
 export default connect(mapStateToProps)(AppWithNavigationState);

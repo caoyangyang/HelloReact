@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View
-} from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
 export default class AppFooter extends Component {
     constructor(props) {
         super(props);
     }
+
     handlePress = () => {
         global.toAddItem();
     };
+
     render() {
         return (
-            <View style={styles.wrapper} >
+            <View style={styles.wrapper}>
                 <Text style={styles.add} onPress={this.handlePress}>Add</Text>
             </View>
         );
     }
 }
+
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
