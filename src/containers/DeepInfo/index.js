@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text,TextInput, StyleSheet,Button } from 'react-native';
-
-
-import {
-    StackNavigator,
-} from 'react-navigation';
+import {StackNavigator} from 'react-navigation';
+import  {connectComponent} from "../../redux/common/mapStateToProps"
 
 class DeepInfo extends Component {
     static navigationOptions = {
@@ -16,7 +13,7 @@ class DeepInfo extends Component {
     }
     componentDidMount() {
         var self = this;
-        var id = this.props.navigation.state.params.id;
+        var id = self.props.navigation.state.params?self.props.navigation.state.params.id:'1';
         fetch("https://reactnow.getsandbox.com/item/" + id)
             .then((response) => {
                 return response.json();
@@ -38,16 +35,9 @@ class DeepInfo extends Component {
     };
 
     save=()=>{
-        fetch('https://reactnow.getsandbox.com/item', {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                item: this.state.data
-            })
-        });
+        this.props.dispatch({type:"UPDATE",loadData:{
+            item: this.state.data
+        }});
         this.props.navigation.navigate('Home');
     };
 
@@ -126,4 +116,4 @@ const styles = StyleSheet.create({
 
     }
 });
-export default DeepInfo;
+export default connectComponent(DeepInfo);

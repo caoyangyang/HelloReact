@@ -16,11 +16,12 @@ function nav(state = initialNavState, action) {
 }
 
 function items(state = initialItemsState, action) {
+    var {data}=state, loadData = action.loadData;
     switch (action.type) {
         case 'SET':
             return {data: action.loadData};
         case 'DELETE':
-            var {data}=state, id = action.loadData;
+            var id = loadData;
             deleteItem(id);
             _.remove(data, function (item) {
                 return item.id === id;
@@ -28,25 +29,40 @@ function items(state = initialItemsState, action) {
             reflashBackUp(data);
             return {data};
         case 'INIT':
-            var data=action.loadData;
+            reflashBackUp(action.loadData);
+            return {data: action.loadData};
+        case 'SEARCH':
+            var keyword = loadData;
+            var result = global.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.detail.toLowerCase().indexOf(keyword) >= 0));
+            return {data: result};
+        case 'ADD':
+            var newItem = loadData;
+            createItem(newItem);
+            data.push(newItem);
             reflashBackUp(data);
             return {data};
-        case 'SEARCH':
-            keyword = action.loadData;
-            var data = global.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.detail.toLowerCase().indexOf(keyword) >= 0));
-            return {data};
-        case 'ADD':
-            var {data}=state;
-            createItem(action.loadData);
-            data.push(data);
+        case 'UPDATE':
+            var existedItem = loadData;
+            index = _.findIndex(data, {id: existedItem.id});
+            data[index] = existedItem;
+            updateItem(existedItem);
             reflashBackUp(data);
             return {data};
         default:
             return state;
     }
 }
-
-createItem=(data)=>{
+updateItem = (data)=> {
+    fetch('https://reactnow.getsandbox.com/item', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+};
+createItem = (data)=> {
     fetch('https://reactnow.getsandbox.com/item', {
         method: 'POST',
         headers: {
@@ -57,7 +73,7 @@ createItem=(data)=>{
     });
 };
 
-deleteItem=(id)=>{
+deleteItem = (id)=> {
     fetch('https://reactnow.getsandbox.com/item', {
         method: 'DELETE',
         headers: {
@@ -70,9 +86,10 @@ deleteItem=(id)=>{
     });
 };
 
-reflashBackUp=(data)=>{
+reflashBackUp = (data)=> {
     global.dataFromServer = data;
-}
+};
+
 const AppReducer = combineReducers({
     nav, items
 });
