@@ -11,7 +11,7 @@ export default class MessageBox extends Component {
     render() {
         var datas = this.props.data;
         var messages = datas.length>0?
-            datas.map(m => (<MessageItem key={Math.random()} remove={this.props.remove} title={m.title} detail={m.detail} id={m.id}></MessageItem>))
+            datas.map(m => (<MessageItem key={Math.random()} title={m.title} detail={m.detail} id={m.id}></MessageItem>))
             :<ActivityIndicator></ActivityIndicator>;
         return (
             <ScrollView style={styles.wrapper} >

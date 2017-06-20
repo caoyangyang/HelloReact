@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    Image
-} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import Swipeout from 'react-native-swipeout';
 
 
-export default class MessageItem extends Component {
+class MessageItem extends Component {
     constructor(props) {
         super(props);
     }
@@ -16,22 +13,13 @@ export default class MessageItem extends Component {
     onPress = () => {
         global.toDetail({ id: this.props.id })
     };
+
     render() {
         var delButton = [
             {
                 text: 'Delete',
                 onPress: () => {
-                    fetch('https://reactnow.getsandbox.com/item', {
-                        method: 'DELETE',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            id: this.state.id.toString()
-                        })
-                    })
-                    this.props.remove(this.state.id.toString());
+                    this.props.dispatch({ type: 'DELETE',loadData:this.state.id.toString()});
                 }
             }
         ]
@@ -83,3 +71,12 @@ const styles = StyleSheet.create({
         fontSize: 12
     }
 });
+
+const mapStateToProps = state => ({
+    items: state.items
+});
+MessageItem.propTypes = {
+    items: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps)(MessageItem);

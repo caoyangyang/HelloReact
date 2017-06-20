@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import MessageBox from '../MessageBox';
 import SearchBar from '../SearchBar';
-import _ from 'lodash';
+
 
 class AppContent extends Component {
     constructor(props) {
@@ -25,15 +25,6 @@ class AppContent extends Component {
                 console.warn(error);
             });
     }
-    remove=(id)=>{
-        var self=this;
-        var {searchData}=self.state;
-
-        _.remove(searchData,function(item){
-            return item.id===id;
-        });
-        this.props.dispatch({ type: 'SET',loadData:searchData});
-    };
 
     search = (keyword) => {
         keyword = keyword.toLowerCase();
@@ -46,7 +37,7 @@ class AppContent extends Component {
         return (
             <View style={styles.wrapper} >
                 <SearchBar search={this.search}></SearchBar>
-                <MessageBox data={items.data} remove={this.remove}></MessageBox>
+                <MessageBox data={items.data}></MessageBox>
             </View>
         );
     }

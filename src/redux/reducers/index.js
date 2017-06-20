@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 import {AppNavigator} from '../../navigator/AppNavigator';
+import _ from 'lodash';
 
-const initialItemsState={data:[]};
-
+const initialItemsState = {data: []};
 const initialNavState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
 
 function nav(state = initialNavState, action) {
@@ -18,14 +18,30 @@ function nav(state = initialNavState, action) {
 function items(state = initialItemsState, action) {
     switch (action.type) {
         case 'SET':
-            return {data: action.loadData };
+            return {data: action.loadData};
+        case 'DELETE':
+            var {data}=state, id = action.loadData;
+            fetch('https://reactnow.getsandbox.com/item', {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: id
+                })
+            });
+            _.remove(data, function (item) {
+                return item.id === id;
+            });
+            return {data};
         default:
             return state;
     }
 }
 
 const AppReducer = combineReducers({
-    nav,items
+    nav, items
 });
 
 export default AppReducer;
