@@ -34,6 +34,7 @@ function items(state = initialItemsState, action) {
             _.remove(data, function (item) {
                 return item.id === id;
             });
+            global.dataFromServer = data;
             return {data};
         case 'INIT':
             var data=action.loadData;
