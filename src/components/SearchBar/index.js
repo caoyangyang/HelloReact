@@ -5,16 +5,17 @@ import {
     View,
     Button
 } from 'react-native';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = { text: '' };
     }
     render() {
-        onPress=(event)=>{
-            this.props.search(this.state.text);
-        };
+        onPress=()=>{this.props.dispatch({ type: 'SEARCH',loadData:this.state.text.toLowerCase()});};
+
         return (
             <View style={styles.wrapper}>
                 <TextInput
@@ -60,3 +61,11 @@ const styles = StyleSheet.create({
         marginLeft:5
     }
 });
+
+SearchBar.propTypes = {
+    items: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+    items: state.items
+});
+export default connect(mapStateToProps)(SearchBar);

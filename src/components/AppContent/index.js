@@ -24,16 +24,11 @@ class AppContent extends Component {
             });
     }
 
-    search = (keyword) => {
-        keyword = keyword.toLowerCase();
-        this.props.dispatch({ type: 'SEARCH',loadData:keyword});
-    };
-
     render() {
         const {items}=this.props;
         return (
             <View style={styles.wrapper} >
-                <SearchBar search={this.search}></SearchBar>
+                <SearchBar></SearchBar>
                 <MessageBox data={items.data}></MessageBox>
             </View>
         );
