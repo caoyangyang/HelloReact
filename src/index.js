@@ -1,16 +1,23 @@
-import { AppRegistry } from 'react-native';
-import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
+import React from 'react';
+import {AppRegistry} from 'react-native';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 
-import Main from './containers/App';
-import Detail from './containers/DeepInfo';
-import Add from './containers/AddItem';
+import AppReducer from './redux/reducers';
+import AppWithNavigationState from './navigator/AppNavigator';
+
+class HelloReactApp extends React.Component {
+    store = createStore(AppReducer);
+
+    render() {
+        return (
+            <Provider store={this.store}>
+                <AppWithNavigationState />
+            </Provider>
+        );
+    }
+}
 
 export default function index() {
-    const ReactApp = StackNavigator({
-        Home: { screen: Main },
-        Detail: { screen: Detail },
-        AddItem: { screen: Add }
-    });
-    AppRegistry.registerComponent('HelloReact', () => ReactApp);
+    AppRegistry.registerComponent('HelloReact', () => HelloReactApp);
 }
