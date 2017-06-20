@@ -35,6 +35,14 @@ function items(state = initialItemsState, action) {
                 return item.id === id;
             });
             return {data};
+        case 'INIT':
+            var data=action.loadData;
+            global.dataFromServer = data;
+            return {data};
+        case 'SEARCH':
+            keyword = action.loadData;
+            var data = global.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.detail.toLowerCase().indexOf(keyword) >= 0));
+            return {data};
         default:
             return state;
     }

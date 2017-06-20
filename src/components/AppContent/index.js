@@ -9,17 +9,15 @@ import SearchBar from '../SearchBar';
 class AppContent extends Component {
     constructor(props) {
         super(props);
-        this.dataFromServer = [];
     }
+    
     componentDidMount() {
-        var self = this;
         fetch('https://reactnow.getsandbox.com/item')
             .then((response) => {
                 return response.json();
             })
             .then((responseJson) => {
-                self.dataFromServer = responseJson.data;
-                this.props.dispatch({ type: 'SET',loadData:responseJson.data});
+                this.props.dispatch({ type: 'INIT',loadData:responseJson.data});
             })
             .catch((error) => {
                 console.warn(error);
@@ -28,8 +26,7 @@ class AppContent extends Component {
 
     search = (keyword) => {
         keyword = keyword.toLowerCase();
-        var result = this.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.detail.toLowerCase().indexOf(keyword) >= 0))
-        this.props.dispatch({ type: 'SET',loadData:result});
+        this.props.dispatch({ type: 'SEARCH',loadData:keyword});
     };
 
     render() {
