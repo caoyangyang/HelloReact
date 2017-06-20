@@ -21,34 +21,58 @@ function items(state = initialItemsState, action) {
             return {data: action.loadData};
         case 'DELETE':
             var {data}=state, id = action.loadData;
-            fetch('https://reactnow.getsandbox.com/item', {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    id: id
-                })
-            });
+            deleteItem(id);
             _.remove(data, function (item) {
                 return item.id === id;
             });
-            global.dataFromServer = data;
+            reflashBackUp(data);
             return {data};
         case 'INIT':
             var data=action.loadData;
-            global.dataFromServer = data;
+            reflashBackUp(data);
             return {data};
         case 'SEARCH':
             keyword = action.loadData;
             var data = global.dataFromServer.filter(a => (a.title.toLowerCase().indexOf(keyword) >= 0 || a.detail.toLowerCase().indexOf(keyword) >= 0));
+            return {data};
+        case 'ADD':
+            var {data}=state;
+            createItem(action.loadData);
+            data.push(data);
+            reflashBackUp(data);
             return {data};
         default:
             return state;
     }
 }
 
+createItem=(data)=>{
+    fetch('https://reactnow.getsandbox.com/item', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+};
+
+deleteItem=(id)=>{
+    fetch('https://reactnow.getsandbox.com/item', {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: id
+        })
+    });
+};
+
+reflashBackUp=(data)=>{
+    global.dataFromServer = data;
+}
 const AppReducer = combineReducers({
     nav, items
 });
