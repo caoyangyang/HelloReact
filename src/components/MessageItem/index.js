@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -11,32 +11,28 @@ class MessageItem extends Component {
     }
 
     onPress = () => {
-        global.toDetail({ id: this.props.id })
+        global.toDetail({id: this.props.id})
     };
 
     render() {
-        var delButton = [
-            {
-                text: 'Delete',
-                onPress: () => {
-                    this.props.dispatch({ type: 'DELETE',loadData:this.state.id.toString()});
-                }
+        var {dispatch, id, title, detail}=this.props;
+        var delButton = [{
+            text: 'Delete',
+            onPress: () => {
+                dispatch({type: 'DELETE', loadData: id.toString()});
             }
-        ]
+        }];
         return (
-            <Swipeout right={delButton} autoClose={true} onOpen={() => {
-                this.setState({
-                    id: this.props.id
-                })
-            }}>
-                <View style={styles.wrapper} >
-                    <Image style={styles.icon} source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}></Image>
-                    <View style={styles.content} >
+            <Swipeout right={delButton} autoClose={true}>
+                <View style={styles.wrapper}>
+                    <Image style={styles.icon}
+                           source={{ uri: 'https://facebook.github.io/react/img/logo_og.png' }}></Image>
+                    <View style={styles.content}>
                         <Text numberOfLines={1} style={styles.groupName} onPress={this.onPress}>
-                            {this.props.title}
+                            {title}
                         </Text>
                         <Text numberOfLines={1} style={styles.latestNews} ellipsizeMode="tail">
-                            {this.props.detail}
+                            {detail}
                         </Text>
                     </View>
                 </View>
