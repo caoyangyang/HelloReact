@@ -27,6 +27,7 @@ class DeepInfo extends Component {
                 console.warn(error);
             });
     }
+    
     startEdit=()=>{
         this.setState({isEdit:true});
     };
