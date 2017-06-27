@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
-import {StackNavigator} from 'react-navigation';
+import {StackNavigator,NavigationActions} from 'react-navigation';
 import  {connectComponent} from "../../redux/common/mapStateToProps"
 import ButtonComponent from 'react-native-button-component';
 
@@ -17,7 +17,13 @@ class AddItem extends Component {
     
     onSubmit = () => {
         this.props.dispatch({type: 'ADD', loadData: {item: this.state}});
-        this.props.navigation.navigate('Home');
+        this.props.navigation.dispatch(NavigationActions.reset(
+                {
+                    index: 0,
+                    actions: [
+                        NavigationActions.navigate({ routeName: 'Home'})
+                    ]
+                }));
     };
 
     render() {
