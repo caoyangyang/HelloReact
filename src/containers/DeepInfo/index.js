@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text,TextInput, StyleSheet } from 'react-native';
-import {StackNavigator} from 'react-navigation';
+import {StackNavigator,NavigationActions} from 'react-navigation';
 import  {connectComponent} from "../../redux/common/mapStateToProps"
 import ButtonComponent from 'react-native-button-component';
 
@@ -40,7 +40,13 @@ class DeepInfo extends Component {
         this.props.dispatch({type:"UPDATE",loadData:{
             item: this.state.data
         }});
-        this.props.navigation.navigate('Home');
+        this.props.navigation.dispatch(NavigationActions.reset(
+            {
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'Home'})
+                ]
+            }));
     };
 
     updateState=(data)=>{
