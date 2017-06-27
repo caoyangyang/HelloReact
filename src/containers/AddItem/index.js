@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {View, Button, TextInput, StyleSheet} from 'react-native';
+import {View, TextInput, StyleSheet} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import  {connectComponent} from "../../redux/common/mapStateToProps"
+import ButtonComponent from 'react-native-button-component';
+
 
 class AddItem extends Component {
     static navigationOptions = {
@@ -31,12 +33,7 @@ class AddItem extends Component {
                 <TextInput multiline={true}
                            placeholder="More" style={[styles.input, styles.more]} value={this.state.more}
                            onChangeText={(more) => this.setState({ more })}/>
-                <Button color="gray"
-                        overrides={{ backgroundColor: "black" }}
-                        title="Add"
-                        style={styles.addButton}
-                        onPress={this.onSubmit}>
-                </Button>
+                <ButtonComponent shape='not-default'  text="Add"  backgroundColors={['#f1396d','#f1396d']} style={styles.addButton} onPress={this.onSubmit}/>
             </View>
         );
     }
@@ -64,7 +61,10 @@ const styles = StyleSheet.create({
         marginBottom: 100
     },
     addButton: {
-        flex: 1
+        flex: 1,
+        borderRadius:6,
+        marginRight:4,
+        marginLeft:4
     }
 });
 export default connectComponent(AddItem);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text,TextInput, StyleSheet,Button } from 'react-native';
+import { View, Text,TextInput, StyleSheet } from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import  {connectComponent} from "../../redux/common/mapStateToProps"
+import ButtonComponent from 'react-native-button-component';
 
 class DeepInfo extends Component {
     static navigationOptions = {
@@ -54,12 +55,7 @@ class DeepInfo extends Component {
             <Text style={styles.title}>{data.title} </Text>
             <Text style={styles.detail}>{data.detail} </Text>
             <Text style={styles.more}>{data.more} </Text>
-            <Button color="gray"
-                    overrides={{ backgroundColor: "black" }}
-                    title="Edit"
-                    style={styles.button}
-                    onPress={this.startEdit}>
-            </Button>
+            <ButtonComponent  shape='not-default' backgroundColors={['#f1396d','#f1396d']} text="Edit" style={styles.button} onPress={this.startEdit}/>
         </View>;
 
         editComponent =<View style={styles.main} onPress={() => { navigate('Home') }}>
@@ -69,19 +65,8 @@ class DeepInfo extends Component {
                        placeholder="Detail" style={[styles.input, styles.detail]} value={data.detail} onChangeText={(detail) => this.updateState({ detail })} />
             <TextInput multiline={true}
                        placeholder="More" style={[styles.input, styles.more]} value={data.more} onChangeText={(more) => this.updateState({ more })} />
-
-            <Button color="gray"
-                    overrides={{ backgroundColor: "black" }}
-                    title="Save"
-                    style={styles.button}
-                    onPress={this.save}>
-            </Button>
-            <Button color="gray"
-                    overrides={{ backgroundColor: "black" }}
-                    title="Cancel"
-                    style={styles.button}
-                    onPress={this.cancel}>
-            </Button>
+            <ButtonComponent   shape='not-default' text="Save" backgroundColors={['#f1396d','#f1396d']} style={styles.button} onPress={this.save}/>
+            <ButtonComponent   shape='not-default' text="Cancel" backgroundColors={['grey','grey']} style={styles.button} onPress={this.cancel}/>
         </View>;
 
         return (this.state.isEdit?editComponent:viewComponent);
@@ -114,7 +99,11 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
     button:{
-
+        height:30,
+        marginTop:10,
+        borderRadius:6,
+        marginRight:4,
+        marginLeft:4
     }
 });
 export default connectComponent(DeepInfo);
