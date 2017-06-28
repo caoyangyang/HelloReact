@@ -12,6 +12,7 @@
     "react-native": "0.45.1",
     "react-native-button-component": "^0.1.17",
     "react-native-swipeout": "^2.1.1",
+    "react-native-vector-icons": "^4.2.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.5",
     "redux": "^3.7.0",

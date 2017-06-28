@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 export default class AppFooter extends Component {
     constructor(props) {
@@ -13,7 +15,7 @@ export default class AppFooter extends Component {
     render() {
         return (
             <View style={styles.wrapper}>
-                <Text style={styles.add} onPress={this.handlePress}>Add</Text>
+                <Icon  style={styles.add} name="plus" size={30} color="white" onPress={this.handlePress}/>
             </View>
         );
     }
@@ -33,7 +35,6 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingLeft: 10,
         fontSize: 20,
-        flex: 1,
-        color: "white"
+        flex: 1
     }
 });
