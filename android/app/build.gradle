@@ -133,6 +133,7 @@ android {
 }
 
 dependencies {
+    compile project(':lottie-react-native')
     compile project(':react-native-linear-gradient')
     compile project(':react-native-spinkit')
     compile fileTree(dir: "libs", include: ["*.jar"])
