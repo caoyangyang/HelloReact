@@ -17,7 +17,7 @@ class AddItem extends Component {
     
     onSubmit = () => {
         this.props.dispatch({type: 'ADD', loadData: {item: this.state}});
-        global.toHome();
+        this.props.dispatch({ type: 'home' })
     };
 
     render() {

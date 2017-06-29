@@ -10,18 +10,18 @@ class AppFooter extends Component {
     }
 
     home = ()=>{
-        global.toHome();
+        this.props.dispatch({ type: 'home' })
     };
     add = () => {
         this.props.dispatch({ type: 'add' })
     };
 
     contact = ()=> {
-        global.toContact();
+        this.props.dispatch({ type: 'contact' })
     };
 
     article = ()=> {
-        global.toArticle();
+        this.props.dispatch({ type: 'articles' })
     };
 
     render() {

@@ -14,17 +14,10 @@ class Home extends Component {
     constructor(props) {
         super(props);
         const {navigate} = this.props.navigation;
-        this.toContact = () => {
-            this.props.dispatch({ type: 'contact' })
-        };
-        this.toArticle = () => {
-            this.props.dispatch({ type: 'articles' })
-        };
+     
         this.toHome = () => {
             this.props.dispatch({ type: 'home' })
         };
-        global.toContact = this.toContact.bind(this);
-        global.toArticle = this.toArticle.bind(this);
         global.toHome = this.toHome.bind(this);
     }
 
