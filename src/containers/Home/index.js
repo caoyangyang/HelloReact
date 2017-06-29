@@ -13,12 +13,6 @@ class Home extends Component {
 
     constructor(props) {
         super(props);
-        const {navigate} = this.props.navigation;
-     
-        this.toHome = () => {
-            this.props.dispatch({ type: 'home' })
-        };
-        global.toHome = this.toHome.bind(this);
     }
 
     render() {
