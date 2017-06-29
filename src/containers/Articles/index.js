@@ -21,7 +21,7 @@ class Articles extends Component {
     render() {
         return (
             <View style={styles.main}>
-                <ScrollableTabView style={styles.scrollableTabView}>
+                <ScrollableTabView tabBarActiveTextColor="#f1396d" tabBarUnderlineStyle={styles.underline} style={styles.scrollableTabView}>
                     <Text tabLabel="IOS">Android Test1</Text>
                     <Text tabLabel="Android">Android Test2</Text>
                     <Text tabLabel="ReactNative">ReactNative Test3</Text>
@@ -32,7 +32,12 @@ class Articles extends Component {
     }
 }
 const styles = StyleSheet.create({
-    main: {flex: 1},
+    main: {
+        flex: 1
+    },
+    underline:{
+        backgroundColor:'#f1396d'
+    },
     scrollableTabView: {
         flex: 10,
         backgroundColor: 'white'
