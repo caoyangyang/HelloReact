@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import  {connectComponent} from "../../redux/common/mapStateToProps"
 
 
-export default class AppFooter extends Component {
+class AppFooter extends Component {
     constructor(props) {
         super(props);
     }
@@ -12,7 +13,7 @@ export default class AppFooter extends Component {
         global.toHome();
     };
     add = () => {
-        global.toAddItem();
+        this.props.dispatch({ type: 'add' })
     };
 
     contact = ()=> {
@@ -24,6 +25,7 @@ export default class AppFooter extends Component {
     };
 
     render() {
+        var {dispatch}=this.props;
         return (
             <View style={styles.wrapper}>
                 <View style={styles.iconWrapper}>
@@ -67,3 +69,4 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 });
+export default connectComponent(AppFooter);
