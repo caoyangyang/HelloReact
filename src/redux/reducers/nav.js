@@ -2,39 +2,38 @@ import {AppNavigator} from '../../navigator/AppNavigator';
 import {StackNavigator, NavigationActions,addNavigationHelpers} from 'react-navigation';
 
 const initialNavState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
-
+function navigate(parames,state){
+    return AppNavigator.router.getStateForAction(
+        NavigationActions.navigate(parames),
+        state
+    );
+}
+function reset(parames,state){
+    dispatchNav = NavigationActions.reset({
+        index: 0,
+        actions: [
+            NavigationActions.navigate(parames)
+        ]
+    })
+    return AppNavigator.router.getStateForAction(dispatchNav, state);
+}
 function nav(state = initialNavState, action) {
     let nextState;
     switch (action.type) {
         case 'articles':
-            var dispatchNav = NavigationActions.reset({
-                index: 0,
-                actions: [
-                    NavigationActions.navigate({ routeName: 'Articles'})
-                ]
-            });
-            nextState = AppNavigator.router.getStateForAction(dispatchNav, state);
+            nextState = reset({routeName:'Articles'},state);
             break;
         case 'home':
-            var dispatchNav = NavigationActions.reset({
-                index: 0,
-                actions: [
-                    NavigationActions.navigate({ routeName: 'Home'})
-                ]
-            });
-            nextState = AppNavigator.router.getStateForAction(dispatchNav, state);
+            nextState =reset({routeName:'Home'},state);
             break;
-        
         case 'add':
-            NavigationActions.navigate({ routeName: 'AddItem' });
+            nextState = navigate({routeName:'AddItem'},state);
             break;
-        
         case 'detail':
-            NavigationActions.navigate({ routeName: 'Detail',params: action.payload});
+            nextState = navigate({ routeName: 'Detail',params: action.payload}, state)
             break;
-        
         case 'contact':
-            NavigationActions.navigate({ routeName: 'ContactUs' });
+            nextState = navigate({routeName:'ContactUs'},state);
             break;
         default:
             nextState = AppNavigator.router.getStateForAction(action, state);

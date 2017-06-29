@@ -18,7 +18,7 @@ class Home extends Component {
             this.props.dispatch({ type: 'detail',payload:value })
         };
         this.toAdd = () => {
-            this.props.dispatch({ type: 'item' })
+            this.props.dispatch({ type: 'add' })
         };
         this.toContact = () => {
             this.props.dispatch({ type: 'contact' })
