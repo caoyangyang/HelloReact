@@ -16,10 +16,11 @@ class App extends Component {
         const { navigate } = this.props.navigation;
         this.toDetail = (value) => { navigate('Detail', value) };
         this.toAdd = () => {navigate('AddItem') };
+        this.toContact = () => {navigate('ContactUs') };
        
         global.toDetail = this.toDetail.bind(this);
         global.toAddItem = this.toAdd.bind(this);
-        
+        global.toContact = this.toContact.bind(this);
     }
 
     render() {

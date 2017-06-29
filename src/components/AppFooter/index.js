@@ -8,14 +8,19 @@ export default class AppFooter extends Component {
         super(props);
     }
 
-    handlePress = () => {
+    add = () => {
         global.toAddItem();
     };
+    
+    contact = ()=>{
+        global.toContact();
+    }
 
     render() {
         return (
             <View style={styles.wrapper}>
-                <Icon  style={styles.add} name="plus" size={30} color="white" onPress={this.handlePress}/>
+                <Icon  style={styles.add} name="plus" size={30} color="white" onPress={this.add}/>
+                <Icon  style={styles.add} name="handshake-o" size={30} color="white" onPress={this.contact}/>
             </View>
         );
     }
@@ -24,7 +29,10 @@ export default class AppFooter extends Component {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        backgroundColor: '#484848'
+        backgroundColor: '#484848',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start'
     },
     content: {
         fontSize: 20,
