@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {StackNavigator,NavigationActions} from 'react-navigation';
 import AppContent from '../../components/AppContent';
 import AppFooter from '../../components/AppFooter';
+import  {connectComponent} from "../../redux/common/mapStateToProps"
 
-import {
-    StackNavigator,NavigationActions
-} from 'react-navigation';
 
 class Home extends Component {
     static navigationOptions = {
@@ -16,29 +15,19 @@ class Home extends Component {
         super(props);
         const {navigate} = this.props.navigation;
         this.toDetail = (value) => {
-            navigate('Detail', value)
+            this.props.dispatch({ type: 'detail',payload:value })
         };
         this.toAdd = () => {
-            navigate('AddItem')
+            this.props.dispatch({ type: 'item' })
         };
         this.toContact = () => {
-            navigate('ContactUs')
+            this.props.dispatch({ type: 'contact' })
         };
         this.toArticle = () => {
-            this.props.navigation.dispatch(NavigationActions.reset({
-                index: 0,
-                actions: [
-                    navigate('Articles')
-                ]
-            }))
+            this.props.dispatch({ type: 'articles' })
         };
         this.toHome = () => {
-            this.props.navigation.dispatch(NavigationActions.reset({
-                index: 0,
-                actions: [
-                    navigate('Home')
-                ]
-            }))
+            this.props.dispatch({ type: 'home' })
         };
         global.toDetail = this.toDetail.bind(this);
         global.toAddItem = this.toAdd.bind(this);
@@ -59,4 +48,4 @@ class Home extends Component {
 const styles = StyleSheet.create({
     main: {flex: 1}
 });
-export default Home;
+export default connectComponent(Home);
