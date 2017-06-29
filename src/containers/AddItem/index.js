@@ -17,13 +17,7 @@ class AddItem extends Component {
     
     onSubmit = () => {
         this.props.dispatch({type: 'ADD', loadData: {item: this.state}});
-        this.props.navigation.dispatch(NavigationActions.reset(
-                {
-                    index: 0,
-                    actions: [
-                        NavigationActions.navigate({ routeName: 'Home'})
-                    ]
-                }));
+        global.toHome();
     };
 
     render() {

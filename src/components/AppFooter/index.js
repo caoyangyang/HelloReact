@@ -8,17 +8,27 @@ export default class AppFooter extends Component {
         super(props);
     }
 
+    home = ()=>{
+        global.toHome();
+    };
     add = () => {
         global.toAddItem();
     };
 
     contact = ()=> {
         global.toContact();
-    }
+    };
+
+    article = ()=> {
+        global.toArticle();
+    };
 
     render() {
         return (
             <View style={styles.wrapper}>
+                <View style={styles.iconWrapper}>
+                    <Icon style={styles.icon} name="cube" size={30} color="white" onPress={this.home}/>
+                </View>
                 <View style={styles.iconWrapper}>
                     <Icon style={styles.icon} name="plus" size={30} color="white" onPress={this.add}/>
                 </View>
@@ -26,7 +36,7 @@ export default class AppFooter extends Component {
                     <Icon style={styles.icon} name="handshake-o" size={30} color="white" onPress={this.contact}/>
                 </View>
                 <View style={styles.iconWrapper}>
-                    <Icon style={styles.icon} name="user-o" size={30} color="white"/>
+                    <Icon style={styles.icon} name="book" size={30} color="white" onPress={this.article}/>
                 </View>
             </View>
         );
@@ -49,8 +59,8 @@ const styles = StyleSheet.create({
     iconWrapper: {
         paddingTop: 14,
         paddingLeft: 10,
-        marginLeft: 40,
-        marginRight: 40,
+        marginLeft: 20,
+        marginRight: 20,
         flex: 1
     },
     icon: {
