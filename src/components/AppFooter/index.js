@@ -8,37 +8,21 @@ class AppFooter extends Component {
     constructor(props) {
         super(props);
     }
-
-    home = ()=>{
-        this.props.dispatch({ type: 'home' })
-    };
-    add = () => {
-        this.props.dispatch({ type: 'add' })
-    };
-
-    contact = ()=> {
-        this.props.dispatch({ type: 'contact' })
-    };
-
-    article = ()=> {
-        this.props.dispatch({ type: 'articles' })
-    };
-
     render() {
         var {dispatch}=this.props;
         return (
             <View style={styles.wrapper}>
                 <View style={styles.iconWrapper}>
-                    <Icon style={styles.icon} name="cube" size={30} color="white" onPress={this.home}/>
+                    <Icon style={styles.icon} name="cube" size={30} color="white" onPress={()=>dispatch({ type: 'home' })}/>
                 </View>
                 <View style={styles.iconWrapper}>
-                    <Icon style={styles.icon} name="plus" size={30} color="white" onPress={this.add}/>
+                    <Icon style={styles.icon} name="plus" size={30} color="white" onPress={()=>dispatch({ type: 'add' })}/>
                 </View>
                 <View style={styles.iconWrapper}>
-                    <Icon style={styles.icon} name="handshake-o" size={30} color="white" onPress={this.contact}/>
+                    <Icon style={styles.icon} name="handshake-o" size={30} color="white" onPress={()=>dispatch({ type: 'contact' })}/>
                 </View>
                 <View style={styles.iconWrapper}>
-                    <Icon style={styles.icon} name="book" size={30} color="white" onPress={this.article}/>
+                    <Icon style={styles.icon} name="book" size={30} color="white" onPress={()=>dispatch({ type: 'articles' })}/>
                 </View>
             </View>
         );
