@@ -11,16 +11,23 @@ export default class AppFooter extends Component {
     add = () => {
         global.toAddItem();
     };
-    
-    contact = ()=>{
+
+    contact = ()=> {
         global.toContact();
     }
 
     render() {
         return (
             <View style={styles.wrapper}>
-                <Icon  style={styles.add} name="plus" size={30} color="white" onPress={this.add}/>
-                <Icon  style={styles.add} name="handshake-o" size={30} color="white" onPress={this.contact}/>
+                <View style={styles.iconWrapper}>
+                    <Icon style={styles.icon} name="plus" size={30} color="white" onPress={this.add}/>
+                </View>
+                <View style={styles.iconWrapper}>
+                    <Icon style={styles.icon} name="handshake-o" size={30} color="white" onPress={this.contact}/>
+                </View>
+                <View style={styles.iconWrapper}>
+                    <Icon style={styles.icon} name="user-o" size={30} color="white"/>
+                </View>
             </View>
         );
     }
@@ -39,10 +46,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 10,
     },
-    add: {
-        paddingTop: 10,
+    iconWrapper: {
+        paddingTop: 14,
         paddingLeft: 10,
-        fontSize: 20,
+        marginLeft: 40,
+        marginRight: 40,
         flex: 1
+    },
+    icon: {
+        fontSize: 20
     }
 });
