@@ -14,9 +14,6 @@ class Home extends Component {
     constructor(props) {
         super(props);
         const {navigate} = this.props.navigation;
-        this.toDetail = (value) => {
-            this.props.dispatch({ type: 'detail',payload:value })
-        };
         this.toAdd = () => {
             this.props.dispatch({ type: 'add' })
         };
@@ -29,7 +26,6 @@ class Home extends Component {
         this.toHome = () => {
             this.props.dispatch({ type: 'home' })
         };
-        global.toDetail = this.toDetail.bind(this);
         global.toAddItem = this.toAdd.bind(this);
         global.toContact = this.toContact.bind(this);
         global.toArticle = this.toArticle.bind(this);

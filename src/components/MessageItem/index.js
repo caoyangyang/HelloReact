@@ -9,7 +9,7 @@ class MessageItem extends Component {
     }
 
     onPress = () => {
-        global.toDetail({id: this.props.id})
+        this.props.dispatch({ type: 'detail',payload:{id: this.props.id} })
     };
 
     render() {
