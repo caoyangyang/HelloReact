@@ -7,9 +7,9 @@ import {
     StackNavigator,NavigationActions
 } from 'react-navigation';
 
-class App extends Component {
+class Home extends Component {
     static navigationOptions = {
-        title: 'ReactNow',
+        title: 'Home',
     };
 
     constructor(props) {
@@ -59,4 +59,4 @@ class App extends Component {
 const styles = StyleSheet.create({
     main: {flex: 1}
 });
-export default App;
+export default Home;
