@@ -32,8 +32,8 @@ function nav(state = initialNavState, action) {
         case 'detail':
             nextState = navigate({ routeName: 'Detail',params: action.payload}, state)
             break;
-        case 'contact':
-            nextState = navigate({routeName:'ContactUs'},state);
+        case 'setting':
+            nextState = navigate({routeName:'Setting'},state);
             break;
         default:
             nextState = AppNavigator.router.getStateForAction(action, state);

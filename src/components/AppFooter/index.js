@@ -19,10 +19,10 @@ class AppFooter extends Component {
                     <Icon style={styles.icon} name="plus" size={30} color="white" onPress={()=>dispatch({ type: 'add' })}/>
                 </View>
                 <View style={styles.iconWrapper}>
-                    <Icon style={styles.icon} name="handshake-o" size={30} color="white" onPress={()=>dispatch({ type: 'contact' })}/>
+                    <Icon style={styles.icon} name="book" size={30} color="white" onPress={()=>dispatch({ type: 'articles' })}/>
                 </View>
                 <View style={styles.iconWrapper}>
-                    <Icon style={styles.icon} name="book" size={30} color="white" onPress={()=>dispatch({ type: 'articles' })}/>
+                    <Icon style={styles.icon} name="cog" size={30} color="white" onPress={()=>dispatch({ type: 'setting' })}/>
                 </View>
             </View>
         );

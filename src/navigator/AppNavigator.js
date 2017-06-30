@@ -6,13 +6,13 @@ import Home from '../containers/Home';
 import Articles from '../containers/Articles';
 import Detail from '../containers/DeepInfo';
 import Add from '../containers/AddItem';
-import ContactUs from '../containers/ContactUs';
+import Setting from '../containers/Setting';
 
 export const AppNavigator = StackNavigator({
     Home: {screen: Home},
     Detail: {screen: Detail},
     AddItem: {screen: Add},
-    ContactUs: {screen: ContactUs},
+    Setting: {screen: Setting},
     Articles: {screen: Articles}
 });
 const AppWithNavigationState = ({dispatch, nav}) => {
