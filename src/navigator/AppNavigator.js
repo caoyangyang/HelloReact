@@ -8,6 +8,7 @@ import Detail from '../containers/DeepInfo';
 import Add from '../containers/AddItem';
 import ContactUs from '../containers/ContactUs';
 import Setting from '../containers/Setting';
+import Memo from '../containers/Memo';
 
 export const AppNavigator = StackNavigator({
     Home: {screen: Home},
@@ -15,7 +16,8 @@ export const AppNavigator = StackNavigator({
     AddItem: {screen: Add},
     ContactUs: {screen: ContactUs},
     Setting: {screen: Setting},
-    Articles: {screen: Articles}
+    Articles: {screen: Articles},
+    Memo: {screen: Memo}
 });
 const AppWithNavigationState = ({dispatch, nav}) => {
     return <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })}/>

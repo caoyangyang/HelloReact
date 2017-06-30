@@ -23,6 +23,9 @@ class Setting extends Component {
                 <View  style={styles.option}>
                     <Text style={styles.optionText} onPress={()=>{dispatch({ type: 'contact' })}}>Contact US</Text>
                 </View>
+                <View  style={styles.option}>
+                    <Text style={styles.optionText} onPress={()=>{dispatch({ type: 'memo' })}}>Memo</Text>
+                </View>
             </View>
         );
     }

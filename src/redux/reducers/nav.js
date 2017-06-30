@@ -38,6 +38,9 @@ function nav(state = initialNavState, action) {
         case 'setting':
             nextState = navigate({routeName:'Setting'},state);
             break;
+        case 'memo':
+            nextState = navigate({routeName:'Memo'},state);
+            break;
         default:
             nextState = AppNavigator.router.getStateForAction(action, state);
             break;
