@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import ContactUs from '../../containers/ContactUs';
+import  {connectComponent} from "../../redux/common/mapStateToProps"
 
 import {
     StackNavigator,
@@ -12,20 +14,32 @@ class Setting extends Component {
 
     constructor(props) {
         super(props);
-        const {navigate} = this.props.navigation;
     }
 
     render() {
+        var {dispatch}=this.props;
         return (
             <View style={styles.main}>
-                <Text tabLabel="IOS">Setting</Text>
+                <View  style={styles.option}>
+                    <Text style={styles.optionText} onPress={()=>{dispatch({ type: 'contact' })}}>Contact US</Text>
+                </View>
             </View>
         );
     }
 }
 const styles = StyleSheet.create({
     main: {
-        flex: 1
+        flex: 1,
+        padding: 10
+    },
+    option: {
+        marginTop: 10,
+        marginLeft:20
+    },
+    optionText: {
+        fontSize: 18,
+        color:'#f1396d'
     }
 });
-export default Setting;
+
+export default connectComponent(Setting);
