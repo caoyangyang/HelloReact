@@ -9,6 +9,7 @@ import Add from '../screens/AddItem';
 import ContactUs from '../screens/ContactUs';
 import Setting from '../screens/Setting';
 import Memo from '../screens/Memo';
+import Intro from '../screens/Intro';
 
 export const AppNavigator = StackNavigator({
     Home: {screen: Home},
@@ -17,7 +18,8 @@ export const AppNavigator = StackNavigator({
     ContactUs: {screen: ContactUs},
     Setting: {screen: Setting},
     Articles: {screen: Articles},
-    Memo: {screen: Memo}
+    Memo: {screen: Memo},
+    Intro: {screen: Intro}
 });
 const AppWithNavigationState = ({dispatch, nav}) => {
     return <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })}/>

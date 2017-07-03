@@ -41,6 +41,9 @@ function nav(state = initialNavState, action) {
         case 'memo':
             nextState = navigate({routeName:'Memo'},state);
             break;
+        case 'intro':
+            nextState = navigate({routeName:'Intro'},state);
+            break;
         default:
             nextState = AppNavigator.router.getStateForAction(action, state);
             break;
