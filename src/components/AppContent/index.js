@@ -11,7 +11,7 @@ class AppContent extends Component {
     }
 
     componentDidMount() {
-        fetch('https://reactnow.getsandbox.com/item')
+        fetch('https://reactwow.getsandbox.com/item')
             .then((response) => {
                 return response.json();
             })

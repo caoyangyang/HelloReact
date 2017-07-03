@@ -40,7 +40,7 @@ const items=function(state = initialItemsState, action) {
 }
 
 updateItem = (data)=> {
-    fetch('https://reactnow.getsandbox.com/item', {
+    fetch('https://reactwow.getsandbox.com/item', {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
@@ -50,7 +50,7 @@ updateItem = (data)=> {
     });
 };
 createItem = (data)=> {
-    fetch('https://reactnow.getsandbox.com/item', {
+    fetch('https://reactwow.getsandbox.com/item', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -61,7 +61,7 @@ createItem = (data)=> {
 };
 
 deleteItem = (id)=> {
-    fetch('https://reactnow.getsandbox.com/item', {
+    fetch('https://reactwow.getsandbox.com/item', {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',

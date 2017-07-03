@@ -15,7 +15,7 @@ class DeepInfo extends Component {
     componentDidMount() {
         var self = this;
         var id = self.props.navigation.state.params?self.props.navigation.state.params.id:'1';
-        fetch("https://reactnow.getsandbox.com/item/" + id)
+        fetch("https://reactwow.getsandbox.com/item/" + id)
             .then((response) => {
                 return response.json();
             })
