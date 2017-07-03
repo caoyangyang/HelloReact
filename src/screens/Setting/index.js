@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import ContactUs from '../../containers/ContactUs';
+import ContactUs from '../../screens/ContactUs';
 import  {connectComponent} from "../../redux/common/mapStateToProps"
 
 import {

@@ -2,13 +2,13 @@ import React from 'react';
 import {StackNavigator, addNavigationHelpers} from 'react-navigation';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import Home from '../containers/Home';
-import Articles from '../containers/Articles';
-import Detail from '../containers/DeepInfo';
-import Add from '../containers/AddItem';
-import ContactUs from '../containers/ContactUs';
-import Setting from '../containers/Setting';
-import Memo from '../containers/Memo';
+import Home from '../screens/Home';
+import Articles from '../screens/Articles';
+import Detail from '../screens/DeepInfo';
+import Add from '../screens/AddItem';
+import ContactUs from '../screens/ContactUs';
+import Setting from '../screens/Setting';
+import Memo from '../screens/Memo';
 
 export const AppNavigator = StackNavigator({
     Home: {screen: Home},
