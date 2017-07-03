@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import  {connectComponent} from "../../redux/common/mapStateToProps"
 import MessageBox from '../MessageBox';
 import SearchBar from '../SearchBar';
-
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 class AppContent extends Component {
     constructor(props) {
@@ -29,6 +29,7 @@ class AppContent extends Component {
             <View style={styles.wrapper}>
                 <SearchBar></SearchBar>
                 <MessageBox data={items.data}></MessageBox>
+                <KeyboardSpacer/>
             </View>
         );
     }
