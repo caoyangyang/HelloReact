@@ -1,7 +1,7 @@
 import {AppNavigator} from '../../navigator/AppNavigator';
 import {StackNavigator, NavigationActions,addNavigationHelpers} from 'react-navigation';
 
-const initialNavState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
+const initialNavState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Intro'));
 function navigate(parames,state){
     return AppNavigator.router.getStateForAction(
         NavigationActions.navigate(parames),
