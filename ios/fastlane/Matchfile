@@ -1,6 +1,6 @@
 git_url "https://github.com/caoyangyang/helloreact"
 
-type "development" # The default type, can be: appstore, adhoc, enterprise or development
+type "adhoc" # The default type, can be: appstore, adhoc, enterprise or development
 shallow_clone "false"
 
 app_identifier "com.yangyang.hello.react"
