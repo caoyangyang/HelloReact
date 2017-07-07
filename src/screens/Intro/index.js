@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View,} from 'react-native';
+import {StyleSheet, Text, View,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import AppIntro from 'react-native-app-intro';
 import {StackNavigator,} from 'react-navigation';
 import  {connectComponent} from "../../redux/common/mapStateToProps"
-
+import Swiper from 'react-native-swiper';
 
 class Intro extends Component {
     static navigationOptions = {
@@ -19,7 +18,7 @@ class Intro extends Component {
     render() {
         const {dispatch}=this.props;
         return (
-            <AppIntro>
+            <Swiper>
                 <View style={[styles.slide,{ backgroundColor: '#fa931d' }]}>
                     <View level={10}><Text style={styles.text}>Page 1</Text></View>
                 </View>
@@ -27,7 +26,7 @@ class Intro extends Component {
                     <View level={5}><Text style={styles.text}>Page 2</Text></View>
                     <Icon style={styles.icon} name="cog" size={30} color="white" onPress={()=>dispatch({ type: 'home' })}/>
                 </View>
-            </AppIntro>
+            </Swiper>
         );
     }
 }
