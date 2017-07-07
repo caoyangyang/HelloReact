@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,TextInput, StyleSheet } from 'react-native';
+import {TouchableWithoutFeedback, Keyboard, View, Text, TextInput, StyleSheet } from 'react-native';
 import {StackNavigator,NavigationActions} from 'react-navigation';
 import  {connectComponent} from "../../redux/common/mapStateToProps"
 import ButtonComponent from 'react-native-button-component';
@@ -57,23 +57,35 @@ class DeepInfo extends Component {
     render() {
         const { navigate, state } = this.props.navigation;
         const { data } = this.state;
-        viewComponent =<View style={styles.main} onPress={() => { navigate('Home') }}>
-            <Text style={styles.title}>{data.title} </Text>
-            <Text style={styles.detail}>{data.detail} </Text>
-            <Text style={styles.more}>{data.more} </Text>
-            <ButtonComponent  shape='not-default' backgroundColors={['#f1396d','#f1396d']} text="Edit" style={styles.button} onPress={this.startEdit}/>
-        </View>;
+        viewComponent =
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.main} onPress={() => { navigate('Home') }}>
+                    <Text style={styles.title}>{data.title} </Text>
+                    <Text style={styles.detail}>{data.detail} </Text>
+                    <Text style={styles.more}>{data.more} </Text>
+                    <ButtonComponent shape='not-default' backgroundColors={['#f1396d','#f1396d']} text="Edit"
+                                     style={styles.button} onPress={this.startEdit}/>
+                </View>
+            </TouchableWithoutFeedback>;
 
-        editComponent =<View style={styles.main} onPress={() => { navigate('Home') }}>
-            <TextInput multiline={true}
-                       placeholder="Title" style={[styles.input, styles.title]} value={data.title} onChangeText={(title) => this.updateState({ title })} />
-            <TextInput multiline={true}
-                       placeholder="Detail" style={[styles.input, styles.detail]} value={data.detail} onChangeText={(detail) => this.updateState({ detail })} />
-            <TextInput multiline={true}
-                       placeholder="More" style={[styles.input, styles.more]} value={data.more} onChangeText={(more) => this.updateState({ more })} />
-            <ButtonComponent   shape='not-default' text="Save" backgroundColors={['#f1396d','#f1396d']} style={styles.button} onPress={this.save}/>
-            <ButtonComponent   shape='not-default' text="Cancel" backgroundColors={['grey','grey']} style={styles.button} onPress={this.cancel}/>
-        </View>;
+        editComponent =
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.main} onPress={() => { navigate('Home') }}>
+                    <TextInput multiline={true}
+                               placeholder="Title" style={[styles.input, styles.title]} value={data.title}
+                               onChangeText={(title) => this.updateState({ title })}/>
+                    <TextInput multiline={true}
+                               placeholder="Detail" style={[styles.input, styles.detail]} value={data.detail}
+                               onChangeText={(detail) => this.updateState({ detail })}/>
+                    <TextInput multiline={true}
+                               placeholder="More" style={[styles.input, styles.more]} value={data.more}
+                               onChangeText={(more) => this.updateState({ more })}/>
+                    <ButtonComponent shape='not-default' text="Save" backgroundColors={['#f1396d','#f1396d']}
+                                     style={styles.button} onPress={this.save}/>
+                    <ButtonComponent shape='not-default' text="Cancel" backgroundColors={['grey','grey']}
+                                     style={styles.button} onPress={this.cancel}/>
+                </View>
+            </TouchableWithoutFeedback>;
 
         return (this.state.isEdit?editComponent:viewComponent);
     }

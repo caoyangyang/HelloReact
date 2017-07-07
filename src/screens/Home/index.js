@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {TouchableWithoutFeedback, Keyboard, View, Text, StyleSheet} from 'react-native';
 import {StackNavigator,NavigationActions} from 'react-navigation';
 import AppContent from '../../components/AppContent';
 import AppFooter from '../../components/AppFooter';
@@ -17,10 +17,12 @@ class Home extends Component {
 
     render() {
         return (
-            <View style={styles.main}>
-                <AppContent />
-                <AppFooter />
-            </View>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.main}>
+                    <AppContent />
+                    <AppFooter />
+                </View>
+            </TouchableWithoutFeedback>
         );
     }
 }
