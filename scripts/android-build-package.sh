@@ -19,7 +19,3 @@ echo '==== end generate key end ===='
 
 echo '==== change thedirectory and generate a signed APK ===='
 cd android/ && ./gradlew assembleRelease && cd ..
-
-
-echo '==== call upload-package-to-firim script ===='
-sh scripts/upload-package-to-firim.sh
