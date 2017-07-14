@@ -7,6 +7,7 @@ echo '==== generate the ipa file with fastlane gem===='
 gem install match gym pilot fastlane
 bundle install
 match appstore
+echo '==== step===='
 fastlane gym --export_method ad-hoc --scheme "HelloReact"
 
 echo '==== back to directory===='
