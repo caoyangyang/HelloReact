@@ -30,6 +30,8 @@ platform :ios do
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
+    cert
+    sigh
     match(type: "adhoc") # more information: https://codesigning.guide
     gym(scheme: "HelloReact") # Build your app - more options available
     pilot
