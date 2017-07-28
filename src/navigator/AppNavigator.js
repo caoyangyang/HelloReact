@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Home from '../screens/Home';
 import Articles from '../screens/Articles';
+import GenerateQRCode from '../screens/GenerateQRCode';
 import Detail from '../screens/DeepInfo';
 import Add from '../screens/AddItem';
 import ContactUs from '../screens/ContactUs';
@@ -19,7 +20,8 @@ export const AppNavigator = StackNavigator({
     Setting: {screen: Setting},
     Articles: {screen: Articles},
     Memo: {screen: Memo},
-    Intro: {screen: Intro}
+    Intro: {screen: Intro},
+    GenerateQRCode:{screen: GenerateQRCode}
 });
 const AppWithNavigationState = ({dispatch, nav}) => {
     return <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })}/>

@@ -44,6 +44,9 @@ function nav(state = initialNavState, action) {
         case 'intro':
             nextState = navigate({routeName:'Intro'},state);
             break;
+        case 'qrcode':
+            nextState = navigate({routeName:'GenerateQRCode'},state);
+            break;
         default:
             nextState = AppNavigator.router.getStateForAction(action, state);
             break;

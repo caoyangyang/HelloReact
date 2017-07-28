@@ -29,6 +29,9 @@ class Setting extends Component {
                 <View  style={styles.option}>
                     <Text style={styles.optionText} onPress={()=>{dispatch({ type: 'intro' })}}>Intro</Text>
                 </View>
+                <View  style={styles.option}>
+                    <Text style={styles.optionText} onPress={()=>{dispatch({ type: 'qrcode' })}}>Generate QR Code</Text>
+                </View>
             </View>
         );
     }
